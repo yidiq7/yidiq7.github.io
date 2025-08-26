@@ -132,7 +132,8 @@ for (let k1 = 0; k1 < n; k1++) {
         geometry.setIndex(indices);
         
         const material = new THREE.LineBasicMaterial({ 
-            color: 0xffffff,
+            color: 0xD0D0D0,
+            // color: 0xffffff,
             opacity: 0.1 + 0.8*(k1 + k2) / (2 * n), // Vary opacity for depth
             transparent: true
         });
