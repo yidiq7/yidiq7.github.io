@@ -1,0 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Mono&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Vars */
+
+:root {
+    --white: #EEEEEE;
+    --offwhite: #D0D0D0;
+    --black: #000000;
+    --offblack: #191919;
+    --magenta: #E53AA3;
+    --magenta-light: #ff7bcc;
+    --red: #F93C31;
+    --blue: #1E93FF;
+    --blue-light: #87D8F1;
+    --yellow: #FFDC00;
+    --orange: #FF851B;
+    --maroon: #921231;
+    --green: #4FCC30;
+    --gray: #555555;
+    --gray-light: #999999;
+    --max-width: 1028px;
+    --font-mono: 'Space Mono', monospace;
+}
+
+body {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+    background-color: var(--black);
+    color: var(--offwhite);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    /*overflow-x: hidden;*/
+}
+
+/* Three.js canvas background */
+    #canvas-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+/* Main container wrapper with fixed max-width */
+.container {
+    max-width: 900px;  
+    margin: 0 auto;  /* Center the container */
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* Content wrapper with gradient background */
+.content-wrapper {
+    background: rgba(0, 0, 0, 0.9);  /* Increased opacity from 0.85 */
+    min-height: 100vh;
+    padding: 0 30px;  /* Slightly more padding */
+    box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.9);  /* Updated shadow to match */
+}
+
+/* Navigation */
+nav {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 0;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.2s forwards;
+    animation-fill-mode: both;
+}
+
+.hero-description {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease 0.4s forwards;
+    animation-fill-mode: both;
+}
+
+/* Research Areas */
+.research-areas {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease 0.6s forwards;
+    animation-fill-mode: both;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    animation: fadeInUp 1s ease 0.8s forwards;
+    animation-fill-mode: both;
+}
+
+.research-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.research-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.research-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.research-card p {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact section */
+.contact {
+    padding: 4rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-links a:hover {
+    color: #fff;
+}
+
+/* Responsive design - maintain fixed width until mobile */
+@media (max-width: 600px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    .content-wrapper {
+        background: rgba(0, 0, 0, 0.95);
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .content-wrapper {
+        padding: 0 20px;
+    }
+    
+    .sphere-bg {
+        width: 800px;
+        height: 800px;
+        margin-left: -400px;
+        margin-top: -400px;
+    }
+}
+
+
+.gradient-text {
+    color: rgba(255, 255, 255, 0.6);
+    background: -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #CCC));
+    background: -moz-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #CCC));
+    background: gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #CCC));
+    background-size: 50px 100%;
+    background-clip: text;
+    animation-name: shimmer;
+    animation-delay: -2s;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-color: #222;
+}
+
+
+@keyframes shimmer {
+    0% {
+        background-position: top left;
+    }
+
+    100% {
+        background-position: top right;
+    }
+}
