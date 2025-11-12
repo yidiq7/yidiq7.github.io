@@ -66,12 +66,27 @@ body {
 }
 
 /* Navigation */
-nav {
+/* nav {
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}*/
+
+nav {
+    position: sticky;
+    top: 0;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: all 0.3s ease;
 }
 
 .logo {
