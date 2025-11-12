@@ -154,7 +154,7 @@ function generateManifold(theta) {
             
             const material = new THREE.LineBasicMaterial({
                 color: 0xD0D0D0,
-                opacity: 0.2 + 0.6*(k1 + k2) / (2 * n), // Vary opacity for depth
+                opacity: 0.2 + 0.2*(k1 + k2) / (2 * n), // Vary opacity for depth
                 transparent: true
             });
             
