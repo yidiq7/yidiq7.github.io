@@ -18,9 +18,7 @@ const scale = 220; // overall scale
 let theta = Math.PI/4;
 
 // Timing variables for consistent animation speed
-let lastTime = performance.now();
-const TARGET_FPS = 60;
-const FRAME_TIME = 1000 / TARGET_FPS;
+let lastTime = null;
 
 // Complex number operations
 function complexMul(z1, z2) {
@@ -179,26 +177,31 @@ group.rotation.y = Math.PI / 2;
 function animate(currentTime) {
     requestAnimationFrame(animate);
     
-    // Calculate delta time for consistent animation speed across browsers
-    const deltaTime = (currentTime - lastTime) / FRAME_TIME;
+    // Initialize lastTime on first frame
+    if (lastTime === null) {
+        lastTime = currentTime;
+    }
+    
+    // Calculate delta time in seconds for consistent animation speed
+    const deltaTime = (currentTime - lastTime) / 1000;
     lastTime = currentTime;
     
-    // Animate theta with time-based speed (consistent across browsers)
-    theta += 0.002 * deltaTime;
+    // Animate theta with time-based speed (0.002 radians per frame at 60fps = 0.12 radians/sec)
+    theta += 0.12 * deltaTime;
     
     // Regenerate the manifold with new theta
     generateManifold(theta);
 
     const speed = 1.0;
-    // Slow rotation with time-based speed
-    group.rotation.x += 0.002 * speed * deltaTime;
-    group.rotation.y += 0.002 * speed * deltaTime;
+    // Slow rotation with time-based speed (0.12 radians/sec)
+    group.rotation.x += 0.12 * speed * deltaTime;
+    group.rotation.y += 0.12 * speed * deltaTime;
     
     renderer.render(scene, camera);
 }
 
-// Start animation with initial timestamp
-animate(performance.now());
+// Start animation
+animate(0);
 
 // Handle window resize
 window.addEventListener('resize', () => {
