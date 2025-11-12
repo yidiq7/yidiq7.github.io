@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{cite}
+\bibliographystyle{unsrt}
+\begin{document}
+
+\begin{center}
+\Large \textbf{Research Statement}\\
+\large Yidi Qi\\
+\end{center}
+
+\section*{Overview and Vision}
+The emergence of artificial intelligence as a transformative tool in scientific discovery represents one of the most exciting developments in modern science.
+My research is driven by the conviction that AI will not remain merely a computational tool but will offer a new paradigm and serve as a central engine for the next decade of progress in mathematics and theoretical physics.
+I envision and actively develop AI methods built upon three complementary pillars, covering the full spectrum of mathematical inquiry:
+
+\begin{enumerate}
+    \item \textbf{AI for Solving the Intractable:} Using AI to solve complex systems and perform calculations that are intractable with traditional methods.
+    \item \textbf{AI for Discovery:} Employing AI as an exploratory tool to uncover novel patterns, structures, and conjectures across vast mathematical and physical landscapes.
+    \item \textbf{AI for Rigor:} Leveraging AI to bridge the gap between numerical approximation and formal certainty, creating pathways for computer-assisted and formally verified proofs.
+\end{enumerate}
+
+As a postdoctoral researcher, I will advance this vision by pursuing an ambitious research program centered on computational geometry and its application to fundamental physics, while also demonstrating the broader impact of these AI methods across other areas of pure mathematics.
+
+\section*{Past and Current Research: AI for String Theory Geometry}
+
+%\begin{figure}[h!]
+%    \centering
+%    %\includegraphics[width=0.3\textwidth]{calabi-yau-manifold-1.png} 
+%    \includegraphics[width=0.3\textwidth]{calabi-yau.jpg} 
+%    \caption{Calabi–Yau manifold, the building block of our universe according to string theory.}
+%    \label{fig:calabi_yau}
+%\end{figure}
+%
+\subsection*{AI for Solving the Intractable: Numerical Calabi–Yau and $G_2$ Metrics}
+String theory, a leading candidate for a unified theory of fundamental physics, postulates that our universe has six extra dimensions curled up into geometric spaces called Calabi–Yau manifolds.
+The shape and size of these manifolds determine physical properties such as particle masses and interaction strengths in our four-dimensional world.
+For decades, a major obstacle to making quantitative predictions from string theory has been the inability to solve the complex equations that define the geometry, or the metric, of these manifolds.
+
+In my early work, I developed a Physics-Informed Neural Network architecture to compute Ricci-flat metrics on Calabi–Yau manifolds~\cite{douglas_numerical_2022}.
+This AI-based method outperforms traditional numerical methods ~\cite{Donaldson2009, Douglas2008, Headrick2013} and generalizes to complex, less symmetric cases.
+It enabled the first machine learning-based quantitative computations of particle masses from string theory, transforming a largely qualitative field into one capable of quantitative analysis~\cite{butbaia_physical_2024, berglund2024precisionstringphenomenology, constantin2025reproducingstandardmodelfermion}.
+I also created and maintain \texttt{MLGeometry}, an open-source Python package that has become a standard tool in this emerging field.
+
+Building on this foundation, I extended the methodology to seven-dimensional $G_2$ manifolds~\cite{douglas_harmonic_2024}, the geometric structures underlying M-theory, a unifying framework of all string theories.
+Our recent results provided the first numerical evidence for the existence of specific geometric structures (nowhere-vanishing harmonic 1-forms) that are crucial to the mathematical construction of $G_2$ metrics~\cite{joyce_new_2021}.
+This AI-based evidence represents a significant advance in differential geometry, showing how AI can provide key insights where direct analytic construction remains out of reach.
+
+\subsection*{AI for Discovery: Evolutionary Algorithms for Geometric Discovery}
+To fully extract physical predictions from string theory, one must also study some special three-dimensional submanifolds, known as special Lagrangians, existing within Calabi–Yau manifolds.
+They are also essential to understand mirror symmetry, a profound duality in modern geometry~\cite{candelas_pair_1991, Strominger_1996}. 
+Although a rich family of such solutions is conjectured to exist, only a few simple examples were explicitly known.
+
+Inspired by quality-diversity optimization~\cite{chatzilygeroudis_quality-diversity_2020}, a modern class of evolutionary algorithms, I designed a multi-phase search algorithm that simultaneously optimizes for the special Lagrangian condition while maximizing geometric diversity across the solution space.
+This approach has already yielded several new candidates, demonstrating how modern AI search algorithms can systematically explore mathematical landscapes that were previously inaccessible. 
+
+\subsection*{AI for Rigor: From Numerical Solutions to Computer-Assisted Proofs}
+While AI can provide highly accurate numerical solutions, mathematics and theoretical physics ultimately demands the certainty of proof. 
+My current work aims to elevate our numerical progress on Calabi–Yau metrics into mathematical certainty by building computer-assisted proofs of existence theorems.
+Together with my collaborators, we are developing a validation pipeline that uses the highly accurate neural network solutions as starting points for rigorous verification.
+By defining a small neighborhood around the approximate solution, we can use interval arithmetic to compute rigorous bounds on the governing equations.
+This allows the use of fixed-point theorems to formally prove that a true, unique solution must exist within those bounds. 
+
+\subsection*{Broader Applications of AI in Mathematics and Physics}
+To demonstrate the versatility of my approach, I have applied AI to fundamental problems in other areas of mathematics, including using reinforcement learning to solve computationally hard combinatorial problems in cluster algebra (quiver mutations) and applying convolutional neural networks to predict properties of central objects in number theory, such as the rank of $L$-functions~\cite{bieri_learning_2025, bieri2025machinelearningvanishingorder}.
+These projects highlight a central theme of my work: using AI to reveal structure and provide solutions to computationally challenging problems across mathematical sciences.
+
+\section*{Future Directions}
+My long-term goal is to establish AI not merely as a problem-solving tool but as a fundamental framework for mathematical and physical research. 
+During my postdoctoral work, I will pursue an integrated research program advancing AI methods in two main directions:
+
+\subsection*{Deepening AI’s Role in String Theory and Geometry}
+My primary goal is to complete the project of numerically verifying the existence of the Calabi–Yau metric.
+This project is deeply challenging, sitting at the intersection of differential geometry, analysis, and machine learning.
+Its success would pioneer a powerful new workflow in mathematics that moves from AI-driven discovery to computer-assisted proof.
+
+Once established, this verification framework can be extended to unsolved geometric problems such as the existence of compact $G_2$ metrics.
+Parallel efforts will apply the same ideas to rigorously verify the special Lagrangian submanifolds discovered through evolutionary algorithms. 
+These projects will demonstrate a full AI-driven pipeline, from metric computation to discovery and formal verification.
+
+Many problems in string geometry, such as charting the vast landscape of Calabi–Yau manifolds, remain computationally unfeasible.
+Their high dimensionality and intricate structure have long posed major challenges for  traditional analytic and numerical techniques.
+Yet rapid advances in AI algorithms and computing hardware are changing what can be explored in practice. 
+As these tools mature, they may allow us to systematically map and characterize the string landscape in ways that were previously impossible.
+
+\subsection*{Broadening AI’s Reach Across Mathematics and Physics}
+Beyond specific applications, I aim to develop a general machine learning framework for submanifold problems.
+Many fundamental questions in geometry, such as finding geodesics, minimal surfaces, or special Lagrangians, take the form "find a submanifold $Y \subset M$ satisfying certain conditions."  
+I will create a unified neural network approach where a network learns to map an initial point cloud with specified topology to points on the target manifold $M$, trained to satisfy desired geometric conditions. Key challenges involve preserving topology during training and constraining outputs to be exactly on the manifold. I will address these challenges using geometric deep learning techniques and differentiable projection layers based on Newton's method.
+Success would yield a versatile and rigorous toolset applicable across geometry, topology, and mathematical physics.
+
+%Another frontier I plan to pursue is the integration of large language models with formal verification systems such as the Lean theorem prover.
+%Automated formalization of mathematical reasoning could allow AI to connect human intuition with machine-verifiable logic, a critical step toward AI-assisted theorem proving.
+%Early experiments on auto-formalizing quantum information science textbooks using customized AI agents have shown promising results, which I plan to extend to broader areas of mathematics and theoretical physics.
+
+%Developing these AI methods is inherently collaborative. I have a strong record of working with mathematicians, physicists, and computer scientists, and I am eager to contribute to an interdisciplinary research environment.
+%For instance, I am particularly excited about the opportunity to collaborate with Prof.~Clay C\'ordova,
+%whose recent work Deep Learning Lattice Gauge Theories uses gauge-equivariant neural network to compute ground states in lattice gauge theories~\cite{Apte_2024}. His use of neural network architectures thatrespect underlying symmetries echo my approach of embedding geometric constraints into AI models, and both efforts seek to use AI as a bridge between data-driven computation and theoretical understanding in physics.
+%
+\section*{Conclusion and Broader Impact}
+My research aims to create a future where AI provides a foundational framework for mathematics and physics: accelerating computation, discovering new structures, and enabling rigorous proof. 
+I am confident that
+my proposed research will not only yield breakthroughs in geometry and string theory but will also
+forge generalizable tools and methodologies that empower a new generation of AI-driven scientific discovery.
+I am eager to dedicate my efforts to helping build this future.
+
+\bibliography{papers}
+\end{document}

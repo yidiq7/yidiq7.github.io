@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Yidi Qi - AI for Math</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yidi Qi - PhD candidate working on AI for mathematics, computational geometry, and string theory.">
+    <link rel="stylesheet" href="media/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <canvas id="canvas-background"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="media/js/calabi-yau.js"></script>
+    <script src="media/js/publications.js"></script>
+
+    <!-- Fixed-width container -->
+    <div class="container">
+        <div class="content-wrapper">
+            <nav>
+                <div class="logo-gradient">AI × Math</div>
+                <!-- <div class="logo">AI × Math</div> -->
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+
+            <section class="hero" id="about">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Yidi Qi</h1>
+                        <!-- <p class="subtitle">AI × String Theory</p> -->
+                        <p class="hero-description">
+                            Yidi Qi is a PhD candidate at Northeastern University and a Junior Investigator at the 
+                            NSF AI Institute for AI and Fundamental Interactions (<a href="https://iaifi.org" target="_blank" class="inline-link">IAIFI</a>). 
+                        </p>
+
+                        <p class="hero-description">
+                            His research lies at the intersection of AI, mathematics and theoretical physics.
+                            He is particularly interested in developing AI tools to solve challenging problems
+                            in string theory, computational geometry and number theory. Recently, He has also become 
+                            interested in auto-formalization with using <a href="https://leanprover-community.github.io" target="_blank" class="inline-link">LEAN</a>
+                            and large language models.  
+                        </p>
+                           
+                        <p class="hero-description">
+                            His lifegoal is to create more interesting projects for the future artificial superintelligence to learn.
+                        </p>
+                    </div>
+                    
+                    <div class="hero-sidebar">
+                        <div class="profile-image">
+                            <img src="media/images/profile_pic.jpg" alt="Yidi Qi">
+                        </div>
+                        <div class="profile-info">
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:y.qi@northeastern.edu">y.qi@northeastern.edu</a>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>360 Huntington Ave<br>Boston, MA 02215</span>
+                            </div>
+                        </div>
+                        <div class="profile-links">
+                            <a href="https://github.com/yidiq7" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=5BI1iDQAAAAJ&hl=en" target="_blank" title="Google Scholar">
+                                <i class="fas fa-graduation-cap"></i>
+                            </a>
+                            <a href="https://inspirehep.net/authors/1835911?ui-citation-summary=true" target="_blank" title="INSPIRE-HEP">
+                                <i class="fas fa-book"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/yidi-qi-534442147/" target="_blank" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="research-areas" id="research">
+                <h2 class="section-title">Research</h2>
+                
+                <div class="research-vision">
+                    <p>My research follows three complementary pillars covering the full spectrum of mathematical inquiry:</p>
+                </div>
+
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-number">01</div>
+                        <h3>AI for Approximation</h3>
+                        <p>Solving complex PDE systems and perform calculations that are intractable with traditional methods, 
+                        such as Calabi-Yau and G2 metrics.</p>
+                        <div class="research-tools">
+                            <span>Physics-Informed Neural Network</span>
+                            <span>Graph Neural Network</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-number">02</div>
+                        <h3>AI for Discovery</h3>
+                        <p>Exploring novel patterns, structures, 
+                        and conjectures across vast physical and mathematical landscapes.</p>
+                        <div class="research-tools">
+                            <span>Evolutionary Algorithms</span>
+                            <span>Reinforcement Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-number">03</div>
+                        <h3>AI for Rigor</h3>
+                        <p>Bridging the gap between numerical approximation and formal certainty, 
+                        creating pathways for computer-assisted and formally verified proofs.
+                        <div class="research-tools">
+                            <span>Numerical Verification</span>
+                            <span>Auto-formalization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-highlight">
+                    <h3>Key Project</h3>
+                    <div class="project-content">
+                        <h4><a href="https://github.com/yidiq7/MLGeometry" target="_blank">MLGeometry</a></h4>
+                        <p>An open-source Python package for computing Calabi-Yau metrics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="publications" id="publications">
+                <h2 class="section-title">Publications</h2>
+                <p class="section-note">Authors listed in alphabetical order following mathematics conventions</p>
+                
+                <div id="publications-list" class="publications-list">
+                    <p class="publications-loading">Loading publications...</p>
+                </div>
+
+                <div class="view-more">
+                    <a href="https://scholar.google.com/citations?user=5BI1iDQAAAAJ&hl=en" target="_blank" class="subtle-link">View full publication list on Google Scholar →</a>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-content">
+                    <p>© 2025 Yidi Qi</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>

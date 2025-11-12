@@ -1,20 +1,24 @@
 // Three.js setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ 
+const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById('canvas-background'),
-    antialias: true, 
-    alpha: true 
+    antialias: true,
+    alpha: true
 });
-
 renderer.setSize(window.innerWidth, window.innerHeight);
 /*renderer.setClearColor(0x000000, 0);*/
 renderer.setClearColor(0xD0D0D0, 0);
 
 // Calabi-Yau manifold parameters
-const n = 5; // dimension parameter
-const m = 36; // mesh resolution
-const scale = 210; // overall scale
+const n = 3; // dimension parameter
+const m = 15; // mesh resolution
+//const scale = 140; // overall scale
+const scale = 220; // overall scale
+
+// Animation parameter
+//let theta = 0;
+let theta = Math.PI/4;
 
 // Complex number operations
 function complexMul(z1, z2) {
@@ -56,108 +60,136 @@ function complexSin(z) {
     };
 }
 
-// Calabi-Yau surface function
-function calabiYauSurface(x, y, k1, k2) {
+function complexCosh(z) {
+    return {
+        re: Math.cosh(z.re) * Math.cos(z.im),
+        im: Math.sinh(z.re) * Math.sin(z.im)
+    };
+}
+
+function complexSinh(z) {
+    return {
+        re: Math.sinh(z.re) * Math.cos(z.im),
+        im: Math.cosh(z.re) * Math.sin(z.im)
+    };
+}
+
+
+// Calabi-Yau surface function - now accepts theta parameter
+function calabiYauSurface(x, y, k1, k2, theta) {
     const z = { re: x, im: y };
     
     // exp(i*2π*k1/n) * cos(z)^(2/n)
     const phase1 = { re: 0, im: 2 * Math.PI * k1 / n };
     const exp1 = complexExp(phase1);
-    const cosZ = complexCos(z);
+    const cosZ = complexCosh(z);
     const cosPow = complexPow(cosZ, 2/n);
     const z1 = complexMul(exp1, cosPow);
     
     // exp(i*2π*k2/n) * sin(z)^(2/n)
     const phase2 = { re: 0, im: 2 * Math.PI * k2 / n };
     const exp2 = complexExp(phase2);
-    const sinZ = complexSin(z);
+    const sinZ = complexSinh(z);
     const sinPow = complexPow(sinZ, 2/n);
     const z2 = complexMul(exp2, sinPow);
     
     return new THREE.Vector3(
         z1.re * scale,
         z2.re * scale,
-        (z1.im + z2.im) * Math.sqrt(2) / 2 * scale
+        (z1.im * Math.cos(theta) + z2.im * Math.sin(theta)) * scale *0.9
     );
-
-/*    return new THREE.Vector3(
-        (-z1.re - z2.re) * scale,
-        (-z1.im - z2.im) * scale * 0.8,
-        (z1.re - z2.re) * scale
-    ); */
 }
 
 // Create wireframe geometry for Calabi-Yau
 const group = new THREE.Group();
 
-// Generate patches for different k1, k2 values
-for (let k1 = 0; k1 < n; k1++) {
-    for (let k2 = 0; k2 < n; k2++) {
-        const geometry = new THREE.BufferGeometry();
-        const vertices = [];
-        const indices = [];
-        
-        // Create grid of vertices
-        for (let i = 0; i <= m; i++) {
-            for (let j = 0; j <= m; j++) {
-                const x = (Math.PI / 2) * (i / m);
-                /*const y = - 1.1 + 2.2 * (j / m);*/
-                const y = - Math.PI / 4 + (Math.PI / 2) * (j / m);
-                
-                const point = calabiYauSurface(x, y, k1, k2);
-                vertices.push(point.x, point.y, point.z);
+// Function to generate manifold geometry
+function generateManifold(theta) {
+    // Clear existing geometry
+    while(group.children.length > 0) {
+        const child = group.children[0];
+        if (child.geometry) child.geometry.dispose();
+        if (child.material) child.material.dispose();
+        group.remove(child);
+    }
+    
+    // Generate patches for different k1, k2 values
+    for (let k1 = 0; k1 < n; k1++) {
+        for (let k2 = 0; k2 < n; k2++) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const indices = [];
+            
+            // Create grid of vertices
+            for (let i = 0; i <= m; i++) {
+                for (let j = 0; j <= m; j++) {
+                    const x = -1.1 + 2.2 * (j / m);
+                    const y = (Math.PI / 2) * (i / m);
+                    //const y = - Math.PI / 4 + (Math.PI / 2) * (j / m);
+                    const point = calabiYauSurface(x, y, k1, k2, theta);
+                    vertices.push(point.x, point.y, point.z);
+                }
             }
-        }
- 
-
-        // Create wireframe lines
-        for (let i = 0; i < m; i++) {
-            for (let j = 0; j < m; j++) {
-                const a = i * (m + 1) + j;
-                const b = i * (m + 1) + j + 1;
-                const c = (i + 1) * (m + 1) + j;
-                const d = (i + 1) * (m + 1) + j + 1;
-                
-                // Horizontal lines
-                indices.push(a, b);
-                // Vertical lines
-                indices.push(a, c);
-                // Last row/column
-                if (i === m - 1) indices.push(c, d);
-                if (j === m - 1) indices.push(b, d);
+            
+            // Create wireframe lines
+            for (let i = 0; i < m; i++) {
+                for (let j = 0; j < m; j++) {
+                    const a = i * (m + 1) + j;
+                    const b = i * (m + 1) + j + 1;
+                    const c = (i + 1) * (m + 1) + j;
+                    const d = (i + 1) * (m + 1) + j + 1;
+                    
+                    // Horizontal lines
+                    indices.push(a, b);
+                    // Vertical lines
+                    indices.push(a, c);
+                    // Last row/column
+                    if (i === m - 1) indices.push(c, d);
+                    if (j === m - 1) indices.push(b, d);
+                }
             }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setIndex(indices);
+            
+            const material = new THREE.LineBasicMaterial({
+                color: 0xD0D0D0,
+                opacity: 0.4 + 0.8*(k1 + k2) / (2 * n), // Vary opacity for depth
+                transparent: true
+            });
+            
+            const wireframe = new THREE.LineSegments(geometry, material);
+            group.add(wireframe);
         }
-        
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-        geometry.setIndex(indices);
-        
-        const material = new THREE.LineBasicMaterial({ 
-            color: 0xD0D0D0,
-            // color: 0xffffff,
-            opacity: 0.1 + 0.8*(k1 + k2) / (2 * n), // Vary opacity for depth
-            transparent: true
-        });
-        
-        const wireframe = new THREE.LineSegments(geometry, material);
-        group.add(wireframe);
     }
 }
 
+// Initial generation
+generateManifold(theta);
 scene.add(group);
-camera.position.z = 500;
-
+camera.position.z = 400;
+group.rotation.x = Math.PI*3/4
+group.rotation.y = Math.PI/2
+//group.rotation.z = Math.PI/2
+//
 // Animation
 function animate() {
     requestAnimationFrame(animate);
     
+    // Animate theta instead of rotating
+    theta += 0.002; // Adjust speed as needed
+    
+    // Regenerate the manifold with new theta
+    generateManifold(theta);
+
+    speed = 1.0
     // Slow rotation
-    group.rotation.x += 0.00053;
-    group.rotation.y += 0.00061;
-    group.rotation.z += 0.00041;
+    group.rotation.x += 0.002 * speed;
+    group.rotation.y += 0.002 * speed;
+    //group.rotation.z -= 0.002 * speed;
     
     renderer.render(scene, camera);
 }
-
 animate();
 
 // Handle window resize

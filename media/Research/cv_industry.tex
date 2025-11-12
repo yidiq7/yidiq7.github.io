@@ -1,0 +1,180 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Industry CV for AI Research Scientist
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{resume}
+
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\usepackage[style=numeric-comp,maxbibnames=99,sorting=ydnt]{biblatex}
+\usepackage{comment}
+\addbibresource{paper.bib}
+
+\name{Yidi Qi}
+\address{y.qi@northeastern.edu}
+\address{\url{https://yidiq7.github.io}}
+%\address{\url{https://yidiq7.github.io} \quad\textbullet\quad \url{https://github.com/yidiq7}}
+\address{360 Huntington Ave \\ Boston, MA 02215}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION
+%----------------------------------------------------------------------------------------
+\begin{rSection}{Education}
+{\bf Northeastern University} \hfill {Boston, MA} \\
+Ph.D. in Physics \hfill {\em Sep. 2021 - Present (Expected 2026)} \\
+{\em Research Focus: AI for String Theory Mathematics}
+
+{\bf Stony Brook University} \hfill {Stony Brook, NY} \\
+M.A in Physics \hfill {\em Sep. 2018 - Sep. 2021} \\
+
+{\bf Jilin University} \hfill {Changchun, China} \\
+B.S. in Physics\hfill {\em Sep. 2014 - June 2018} \\
+{\em Tang Aoqing Honors Program in Science}
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   RESEARCH HIGHLIGHTS
+%----------------------------------------------------------------------------------------
+\begin{rSection}{Selected AI Research Projects}
+
+\begin{rSubsection}{From High-Dimensional PDE Solving to Formal Verification}{}{}{}{}
+\item Designed Physics-Informed Neural Networks (PINNs) to solve challenging systems of nonlinear PDEs on high-dimensional manifolds (Calabi-Yau and G2 metrics), significantly improving computational efficiency over traditional methods.
+\item Created and maintain \href{https://github.com/yidiq7/MLGeometry}{MLGeometry}, a Python package for ML-based differential geometry.
+\item Developing a validation pipeline to formally verify neural network solutions, transforming high-precision numerical outputs into rigorous, machine-verifiable proofs of existence.
+\end{rSubsection}
+
+\begin{rSubsection}{Interpreting "Black Box" Models for Scientific Discovery}{}{}{}{}
+\item Probed the internal mechanism of a CNN trained to solve a central problem in number theory: predicting the rank of elliptic curves from their coefficient sequences.
+\item Through a series of custom, theory-driven experiments, demonstrated that the model develops a sophisticated hybrid methodology, combining established mathematical heuristics with subtle, long-range patterns ("murmurations") in the data.
+\end{rSubsection}
+
+\begin{rSubsection}{Discovering Novel Geometric Structures with Quality-Diversity Algorithms}{}{}{}{}
+\item Applied Quality-Diversity (QD) optimization, a modern class of evolutionary algorithms to discover novel Special Lagrangian submanifolds, a key target structure in differential geometry and string theory.
+
+\end{rSubsection}
+\begin{rSubsection}{Reinforcement Learning for Combinatorial Search on Graphs}{}{}{}{}
+\item Architected a deep reinforcement learning framework, inspired by AlphaZero, to find optimal paths for a computationally hard graph transformation problem previously intractable with classical algorithms.
+\item Designed a novel two-network system where an RL-based policy network guides the search, and a Graph Neural Network (GNN) acts as a learned heuristic, estimating distance-to-target.
+\end{rSubsection}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   PROFESSIONAL EXPERIENCE
+%----------------------------------------------------------------------------------------
+%\pagebreak
+\begin{rSection}{Experience}
+\begin{rSubsection}{The NSF AI Institute for AI and Fundamental Interactions (IAIFI)}{Cambridge, MA}{Junior Investigator}{Jan. 2023 - Present}{}
+\item Apply cutting-edge AI techniques to solve fundamental problems in math and theoretical physics.
+\item Design, implement, and test novel machine learning models for tasks including PDE solving, combinatorial optimization, and scientific model interpretation.
+\end{rSubsection}
+
+\begin{rSubsection}{Simons Center for Geometry and Physics}{Stony Brook, NY}{Research Assistant}{May 2019 - Sep. 2021}{}
+\item Conducted foundational research on applying neural networks to problems in complex geometry.
+%\item Developed a custom neural network architecture to approximate solutions to complex geometric equations, significantly outperforming traditional numerical methods in efficiency.
+\end{rSubsection}
+
+\begin{rSubsection}{ATLAS Experiment at Stony Brook University and CERN}{Geneva, Switzerland}{Research Assistant}{Sep. 2016 - May 2019}{}
+\item Performed statistical analysis and developed machine learning classifiers (BDT, NN) for signal-background separation on Large Hadron Collider data.
+
+%\item Engineered ML classifiers (Boosted Decision Trees, NNs) for signal-background separation in the Higgs to di-muon decay channel.
+%\item Contributed to a high-impact ATLAS collaboration paper in \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.119.051802}{\textit{Physical Review Letters}}.
+\end{rSubsection}
+\end{rSection}
+
+
+
+%------------------------------------------------
+
+\begin{rSection}{Research Visits}
+\begin{rSubsection}{University of Cambridge, Department of Computer Science}{Cambridge, UK}{Visitor}{Sep. 2023 - Oct. 2023}{Host: Challenger Mishra}
+\end{rSubsection}
+
+\begin{rSubsection}{King's College London, Department of Mathematics}{London, UK}{Visitor}{Aug. 2023 - Sep. 2023}{Host: Daniel Platt}
+\end{rSubsection}   
+\end{rSection}
+
+\begin{pSection}{Publications}
+\setlength{\bibitemsep}{4pt}
+\nocite{*}
+\textbf{Authors are listed in alphabetical order}
+%\textit{Authors are listed in alphabetical order}
+\printbibliography[heading=none] 
+\end{pSection}
+
+
+
+\begin{rSection}{Talks}
+\talk{String Phenomenology 2025}{Northeastern University}{Searching for New Special Lagrangians with Quality-Diversity Optimization}{July 2025}
+
+\talk{String Data 2024}{YITP, Kyoto University}{Harmonic 1-form on real loci of Calabi-Yau manifolds}{Dec. 2024}
+
+\talk{Forum for Young Scholars in Physics}{Jilin University}{An introduction to String theory and Artificial Intelligence}{Dec. 2024}
+
+\talk{A Day of Deep Learning and High Energy Theory}{Northeastern University}{Numerical Calabi-Yau and G2 Metrics from Neural Networks}{Mar. 2024}
+
+\talk{AI/Physics Journal Club}{Queen Mary University of London}{Solving PDEs on Higher Dimensional Manifolds with Neural Networks}{Nov. 2023}
+
+\talk{ML@CL Ad-hoc Seminar Series}{University of Cambridge}{Solving PDEs on Higher Dimensional Manifolds with Neural Networks}{Oct. 2023}
+
+
+\talk{Boston Area Chinese Young Physicists Seminar}{Harvard University}{Machine Learning and String Theory for Babies}{Oct. 2022}
+
+\talk{Workshop on Machine Learning and Mathematical Conjecture}{CMSA, Harvard University}{Tutorial on Machine Learning and Knot Theory}{Apr. 2022}
+
+\talk{Seminar Seires on String Phenomenology}{Online}{Numerical Calabi-Yau Metrics from Holomorphic Networks}{Feb. 2021}
+
+%\talk{Graduate Seminar}{Stony Brook University}{Representations  of  Quantum  Many-body  Systems  with  Neural  Networks}{Apr. 2020}
+
+%\talk{Graduate Seminar}{Stony Brook University}{Dark Matter at the Large Hardon Collider}{Apr. 2019}
+
+%\item Select ggF events with MVA methods in Higgs to Di-muon Analysis, Stony Brook University and CERN {\em Aug. 2017}
+\end{rSection}
+
+\iffalse
+\begin{rSection}{Conference Attendance}
+
+
+\conf{IAIFI Summer School \& Workshop}{Tufts University, Aug. 2022}
+
+\conf{Computational Differential Geometry and its Applications in Physics}{Simons Center for Geometry and Physics, Stony Brook University, Nov. 2022}
+
+%\item Select ggF events with MVA methods in Higgs to Di-muon Analysis, Stony Brook University and CERN {\em Aug. 2017}
+\end{rSection}
+\fi
+
+%----------------------------------------------------------------------------------------
+%   TECHNICAL SKILLS
+%----------------------------------------------------------------------------------------
+\begin{rSection}{Technical Skills}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+AI Specialties & Deep Learning (CNNs, GNNs), Reinforcement Learning, PINNs, Interpretability \\
+& Evolutionary Algorithms (Quality-Diversity Optimization) \\
+Programming & Python, C/C++, Fortran \\
+Frameworks & TensorFlow, PyTorch, JAX \\
+Tools & Linux (Bash), Git, Slurm, \LaTeX, Mathematica \\
+\end{tabular}
+\end{rSection}
+
+
+\begin{rSection}{Mentoring Experience}
+\talk{LOGML Summer School 2024}{Imperial College London}{Calabi-Yau Metrics with $U(1)$-invariant Neural Networks}{July 2024}
+
+\talk{Machine Learning in Mathematics \& Theoretical Physics 2023}{University of Oxford}{Tutorial on Calabi-Yau Manifolds and Ricci-flat Metrics}{July 2023}
+
+\end{rSection}
+%----------------------------------------------------------------------------------------
+%	EXAMPLE SECTION
+%----------------------------------------------------------------------------------------
+
+%\begin{rSection}{Section Name}
+
+%Section content\ldots
+
+%\end{rSection}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
