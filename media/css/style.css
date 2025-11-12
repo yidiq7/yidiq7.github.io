@@ -61,10 +61,10 @@ body {
 
 /* Content wrapper with gradient background */
 .content-wrapper {
-    background: rgba(0, 0, 0, 0.80);  /* Increased opacity from 0.85 */
+    background: rgba(0, 0, 0, 0.88);  /* Increased opacity from 0.85 */
     min-height: 100vh;
     padding: 0 30px;  /* Slightly more padding */
-    box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.80);  /* Updated shadow to match */
+    box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.88);  /* Updated shadow to match */
 }
 
 /* Navigation */
