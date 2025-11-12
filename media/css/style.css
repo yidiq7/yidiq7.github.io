@@ -524,13 +524,15 @@ h1 {
     font-family: var(--font-mono);
     font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.4);
-    padding-top: 0.2rem;
+    margin-top: -0.2rem;
+    padding-top: 0rem;
 }
 
 .pub-title {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--white);
+    margin-top: -0.5rem;
     margin-bottom: 0.2rem;
     line-height: 1.4;
 }
@@ -551,6 +553,7 @@ h1 {
     display: flex;
     gap: 0.5rem;
     margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
 }
 
 .pub-links a {
