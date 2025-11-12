@@ -7,18 +7,20 @@ const renderer = new THREE.WebGLRenderer({
     alpha: true
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
-/*renderer.setClearColor(0x000000, 0);*/
 renderer.setClearColor(0xD0D0D0, 0);
 
 // Calabi-Yau manifold parameters
 const n = 3; // dimension parameter
 const m = 15; // mesh resolution
-//const scale = 140; // overall scale
 const scale = 220; // overall scale
 
 // Animation parameter
-//let theta = 0;
 let theta = Math.PI/4;
+
+// Timing variables for consistent animation speed
+let lastTime = performance.now();
+const TARGET_FPS = 60;
+const FRAME_TIME = 1000 / TARGET_FPS;
 
 // Complex number operations
 function complexMul(z1, z2) {
@@ -74,7 +76,6 @@ function complexSinh(z) {
     };
 }
 
-
 // Calabi-Yau surface function - now accepts theta parameter
 function calabiYauSurface(x, y, k1, k2, theta) {
     const z = { re: x, im: y };
@@ -96,7 +97,7 @@ function calabiYauSurface(x, y, k1, k2, theta) {
     return new THREE.Vector3(
         z1.re * scale,
         z2.re * scale,
-        (z1.im * Math.cos(theta) + z2.im * Math.sin(theta)) * scale *0.9
+        (z1.im * Math.cos(theta) + z2.im * Math.sin(theta)) * scale * 0.9
     );
 }
 
@@ -125,7 +126,6 @@ function generateManifold(theta) {
                 for (let j = 0; j <= m; j++) {
                     const x = -1.1 + 2.2 * (j / m);
                     const y = (Math.PI / 2) * (i / m);
-                    //const y = - Math.PI / 4 + (Math.PI / 2) * (j / m);
                     const point = calabiYauSurface(x, y, k1, k2, theta);
                     vertices.push(point.x, point.y, point.z);
                 }
@@ -152,11 +152,13 @@ function generateManifold(theta) {
             geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
             geometry.setIndex(indices);
             
+            // Fixed opacity calculation and material settings
+            const opacityValue = 0.2 + 0.2 * (k1 + k2) / (2 * n);
             const material = new THREE.LineBasicMaterial({
                 color: 0xD0D0D0,
-                opacity: 0.2 + 0.2*(k1 + k2) / (2 * n), // Vary opacity for depth
+                opacity: opacityValue,
                 transparent: true,
-                depthWrite: false,
+                depthWrite: false, // Fix for transparency rendering
                 depthTest: true
             });
             
@@ -170,29 +172,33 @@ function generateManifold(theta) {
 generateManifold(theta);
 scene.add(group);
 camera.position.z = 400;
-group.rotation.x = Math.PI*3/4
-group.rotation.y = Math.PI/2
-//group.rotation.z = Math.PI/2
-//
+group.rotation.x = Math.PI * 3/4;
+group.rotation.y = Math.PI / 2;
+
 // Animation
-function animate() {
+function animate(currentTime) {
     requestAnimationFrame(animate);
     
-    // Animate theta instead of rotating
-    theta += 0.002; // Adjust speed as needed
+    // Calculate delta time for consistent animation speed across browsers
+    const deltaTime = (currentTime - lastTime) / FRAME_TIME;
+    lastTime = currentTime;
+    
+    // Animate theta with time-based speed (consistent across browsers)
+    theta += 0.002 * deltaTime;
     
     // Regenerate the manifold with new theta
     generateManifold(theta);
 
-    speed = 1.0
-    // Slow rotation
-    group.rotation.x += 0.002 * speed;
-    group.rotation.y += 0.002 * speed;
-    //group.rotation.z -= 0.002 * speed;
+    const speed = 1.0;
+    // Slow rotation with time-based speed
+    group.rotation.x += 0.002 * speed * deltaTime;
+    group.rotation.y += 0.002 * speed * deltaTime;
     
     renderer.render(scene, camera);
 }
-animate();
+
+// Start animation with initial timestamp
+animate(performance.now());
 
 // Handle window resize
 window.addEventListener('resize', () => {
