@@ -386,7 +386,8 @@ h1 {
 
 /* Research vision text */
 .research-vision {
-    margin-bottom: 1rem;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
     padding: 0 1.5rem;
     background: rgba(255, 255, 255, 0.02);
     animation: fadeInUp 1s ease 0.6s forwards;
