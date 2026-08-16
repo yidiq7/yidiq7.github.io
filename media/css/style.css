@@ -177,7 +177,7 @@ h1 {
 .hero-description {
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     animation: fadeInUp 1s ease 0.4s forwards;
     animation-fill-mode: both;
 }
