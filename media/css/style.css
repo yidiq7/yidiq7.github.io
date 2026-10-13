@@ -520,6 +520,10 @@ h1 {
     font-weight: 400;
 }
 
+.project-content + .project-content {
+    margin-top: 1.5rem;
+}
+
 .project-content h4 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;

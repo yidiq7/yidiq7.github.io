@@ -21,11 +21,12 @@ async function loadPublications() {
             return;
         }
         
-        // Sort entries by year (newest first)
+        // Sort entries by year, then by arXiv ID (newest first)
         entries.sort((a, b) => {
             const yearA = parseInt(a.year) || 0;
             const yearB = parseInt(b.year) || 0;
-            return yearB - yearA;
+            if (yearA !== yearB) return yearB - yearA;
+            return (b.eprint || '').localeCompare(a.eprint || '');
         });
         
         // Clear loading message
